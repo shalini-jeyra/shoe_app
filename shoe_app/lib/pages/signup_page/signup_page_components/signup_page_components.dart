@@ -1,0 +1,2 @@
+export 'package:shoe_app/pages/login_page/login_page_components/login_page_components.dart';
+export 'package:shoe_app/pages/terms_condition_page/terms_condition_components/terms_condition_components.dart';

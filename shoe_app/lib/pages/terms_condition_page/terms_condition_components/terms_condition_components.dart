@@ -1,0 +1,1 @@
+export 'package:shoe_app/pages/terms_condition_page/terms_condition_page.dart';
