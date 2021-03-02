@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_app/pages/login_page/login_page_components/login_page_components.dart';
-import 'package:firebase_core/firebase_core.dart'; 
+import 'package:firebase_core/firebase_core.dart';
+import 'package:shoe_app/pages/initial_page/initial_page_components/initial_page_components.dart';
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
