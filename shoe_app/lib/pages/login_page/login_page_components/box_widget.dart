@@ -3,7 +3,12 @@ import 'package:shoe_app/pages/login_page/login_page_components/login_page_compo
 import 'package:shoe_app/services/google_signin.dart';
 import 'package:shoe_app/styles/styles.dart';
 
-class BoxWidget extends StatelessWidget {
+class BoxWidget extends StatefulWidget {
+  @override
+  _BoxWidgetState createState() => _BoxWidgetState();
+}
+
+class _BoxWidgetState extends State<BoxWidget> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -31,11 +36,9 @@ class BoxWidget extends StatelessWidget {
                   ),
             )),
       ),
-      onPressed: (){
+      onPressed: ()async{
         
-        signInWithGoogle().whenComplete((){
-          
-        });
+        signInWithGoogle();
         
       },
     );

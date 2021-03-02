@@ -16,8 +16,8 @@ class AppFont {
 class HeaderFonts{
   static final primaryText = AppFont.getAppFont(
     color:TextColor.primaryColor,
-    fontSize: 14,
-    fontWeight: FontWeight.bold
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
   );
   static final secondaryText = AppFont.getAppFont(
     color:TextColor.primaryColor,
