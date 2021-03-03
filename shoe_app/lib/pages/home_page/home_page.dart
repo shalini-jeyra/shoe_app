@@ -57,12 +57,16 @@ class _HomePageState extends State<HomePage> {
             Text('New arrivals', style: HeaderFonts.primaryText),
             NewArrivalWidget(),
             Text('Shop by category', style: HeaderFonts.primaryText),
-          
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CategoryWidget(text:'MEN'),
+                CategoryWidget(text:'WOMEN')
+              ],
+            )
           ],
         ),
       ),
     );
   }
 }
-
-
