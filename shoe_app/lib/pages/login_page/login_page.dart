@@ -119,10 +119,13 @@ class _LoginPageState extends State<LoginPage> {
                             onPressed: () {
                               phone = _phoneNumberController;
                               print(_phoneNumberController);
-                              if (_phoneNumberController.text != '') {
+                              password=_passwordController;
+                              print(password);
+                              if ((_phoneNumberController.text != '') &&
+                                  (_passwordController.text != '')) {
                                 databaseReference
                                     .collection('Users')
-                                    .doc(_phoneNumberController.text)
+                                    .doc(_phoneNumberController.text,)
                                     .set({
                                   "Mobile Number": _phoneNumberController.text,
                                   "Password": _passwordController.text,

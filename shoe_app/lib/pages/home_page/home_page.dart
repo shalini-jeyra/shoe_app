@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoe_app/pages/home_page/home_page_components/home_page_components.dart';
+import 'package:shoe_app/pages/new_arrival_page/new_arrival_page.dart';
 
 //changes made in homepage
 class HomePage extends StatefulWidget {
@@ -52,18 +53,50 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('New arrivals', style: HeaderFonts.primaryText),
+            TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (buildContext) => NewArrivalPage(),
+                    ),
+                  );
+                },
+                child: Text('New arrivals', style: HeaderFonts.primaryText)),
             NewArrivalWidget(),
             Text('Shop by category', style: HeaderFonts.primaryText),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                CategoryWidget(text:'MEN'),
-                CategoryWidget(text:'WOMEN')
+                CategoryWidget(
+                  text: 'MEN',
+                  image:
+                      'https://cdn11.bigcommerce.com/s-pkla4xn3/images/stencil/1280x1280/products/26902/248904/2019-Casual-Shoes-Men-Flat-Sneakers-Breathable-Fashion-Mesh-Mens-Trainers-Shoes-Summer-Sneakers-Men-Running__04818.1551090513.jpg?c=2?imbypass=on',
+                ),
+                CategoryWidget(
+                    text: 'WOMEN',
+                    image:
+                        'https://i.pinimg.com/originals/ab/5a/6f/ab5a6f9869d2938d8abe5d39eab3ebea.jpg')
               ],
-            )
+            ),
+            Text('Sale', style: HeaderFonts.primaryText),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CategoryWidget(
+                  text: 'MEN',
+                  image:
+                      'https://cdn11.bigcommerce.com/s-pkla4xn3/images/stencil/1280x1280/products/26902/248904/2019-Casual-Shoes-Men-Flat-Sneakers-Breathable-Fashion-Mesh-Mens-Trainers-Shoes-Summer-Sneakers-Men-Running__04818.1551090513.jpg?c=2?imbypass=on',
+                ),
+                CategoryWidget(
+                    text: 'WOMEN',
+                    image:
+                        'https://i.pinimg.com/originals/ab/5a/6f/ab5a6f9869d2938d8abe5d39eab3ebea.jpg')
+              ],
+            ),
           ],
         ),
       ),

@@ -23,7 +23,7 @@ class RaisedButtonSignupWidget extends StatelessWidget {
         height: 60,
         child: RaisedButton(
           child: Text('Sign Up',style: TextFonts.secondaryText,),
-          onPressed: () {
+          onPressed: () async{
             final form = _formKey.currentState;
             form.save();
             if (form.validate()) {

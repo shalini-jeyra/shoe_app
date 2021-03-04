@@ -14,4 +14,5 @@ class ButtonColor{
    static final Color ternaryColor=Color.fromARGB(255,58,90,153);
    static final Color boxColor=Color.fromARGB(255,255,255,255);
   static final Color circleColor=Color.fromARGB(255,231,231,243);
+  static final Color sizeColor=Color.fromARGB(255,227,228,232);
 }

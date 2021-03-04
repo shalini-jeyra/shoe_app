@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoe_app/pages/signup_page/signup_page_components/signup_page_components.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignupPage extends StatefulWidget {
   @override
@@ -8,9 +9,15 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   final GlobalKey<FormState> _formKey = GlobalKey();
-  String _password;
-  String _email;
-  String _phoneNumber;
+  var name;
+  var phoneNumber;
+  var email;
+  var password;
+  final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final databaseReference = FirebaseFirestore.instance;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -40,25 +47,30 @@ class _SignupPageState extends State<SignupPage> {
                           Container(
                             padding: EdgeInsets.all(10),
                             child: TextFormField(
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                      borderRadius:
-                                          ButtonBorder.primaryContainer),
-                                  labelText: 'Name',
-                                ),
-                                cursorColor: Colors.black,
-                                keyboardType: TextInputType.name,
-                                validator: (value) {
-                                  if (value.isEmpty) {
-                                    return 'Enter the name';
-                                  }
-                                  return null;
-                                },
-                                onSaved: (value) {}),
+                              controller: _nameController,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderRadius:
+                                        ButtonBorder.primaryContainer),
+                                labelText: 'Name',
+                              ),
+                              cursorColor: Colors.black,
+                              keyboardType: TextInputType.name,
+                              validator: (value) {
+                                if (value.isEmpty) {
+                                  return 'Enter the name';
+                                }
+                                return null;
+                              },
+                              onChanged: (value) {
+                                print(value);
+                              },
+                            ),
                           ),
                           Container(
                             padding: EdgeInsets.all(10),
                             child: TextFormField(
+                              controller: _phoneNumberController,
                               cursorColor: Colors.black,
                               keyboardType: TextInputType.phone,
                               validator: (value) {
@@ -67,7 +79,9 @@ class _SignupPageState extends State<SignupPage> {
                                 }
                                 return null;
                               },
-                              onSaved: (value) => _phoneNumber = value,
+                              onChanged: (value) {
+                                print(value);
+                              },
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                     borderRadius:
@@ -79,9 +93,11 @@ class _SignupPageState extends State<SignupPage> {
                           Container(
                             padding: EdgeInsets.all(10),
                             child: TextFormField(
+                              controller: _emailController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
-                                    borderRadius: ButtonBorder.primaryContainer),
+                                    borderRadius:
+                                        ButtonBorder.primaryContainer),
                                 labelText: 'Email',
                               ),
                               cursorColor: Colors.black,
@@ -92,16 +108,19 @@ class _SignupPageState extends State<SignupPage> {
                                 }
                                 return null;
                               },
-                              onSaved: (value) => _email = value,
+                              onChanged: (value) {
+                                print(value);
+                              },
                             ),
                           ),
-                          
                           Container(
                             padding: EdgeInsets.all(10),
                             child: TextFormField(
+                              controller: _passwordController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
-                                    borderRadius: ButtonBorder.primaryContainer),
+                                    borderRadius:
+                                        ButtonBorder.primaryContainer),
                                 labelText: 'Password',
                               ),
                               cursorColor: Colors.black,
@@ -112,11 +131,59 @@ class _SignupPageState extends State<SignupPage> {
                                 }
                                 return null;
                               },
-                              onSaved: (value) => _password = value,
+                              
                             ),
                           ),
                           SizedBox(height: 20),
-                          RaisedButtonSignupWidget(formKey: _formKey, email: _email, phoneNumber: _phoneNumber, password: _password)
+                          Container(
+                            margin: EdgeInsets.only(left: 10, right: 10),
+                            child: ButtonTheme(
+                              minWidth: double.infinity,
+                              height: 60,
+                              child: RaisedButton(
+                                child: Text(
+                                  'Sign Up',
+                                  style: TextFonts.secondaryText,
+                                ),
+                                onPressed: () async {
+                                  final form = _formKey.currentState;
+                                  name = _nameController.text;
+                                  print(name);
+                                  phoneNumber = _phoneNumberController.text;
+                                  print(phoneNumber);
+                                  email = _emailController.text;
+                                  print(email);
+                                  password = _passwordController.text;
+                                  print(password);
+                                  if ((_nameController.text != '') &&(_phoneNumberController.text != '') &&(_emailController.text != '') &&
+                                      (_passwordController.text != '')) {
+                                    databaseReference
+                                        .collection('Signup Users')
+                                        .doc(_phoneNumberController.text)
+                                        .set({
+                                      "User Name": _nameController,
+                                      "Email": _emailController,
+                                      "Mobile Number":
+                                          _phoneNumberController.text,
+                                      "Password": _passwordController.text,
+                                    });
+                                  }
+                                  if (form.validate()) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                InitialPage()));
+                                  } else
+                                    print('fill all details');
+                                },
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: ButtonBorder.primaryContainer,
+                                ),
+                                color: ButtonColor.secondaryColor,
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ),
@@ -136,4 +203,3 @@ class _SignupPageState extends State<SignupPage> {
         ));
   }
 }
-

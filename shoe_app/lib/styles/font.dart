@@ -45,6 +45,11 @@ class TextFonts{
     fontSize: 14,
     fontWeight: FontWeight.bold
   );
+  static final sentenceText=AppFont.getAppFont(
+    color:TextColor.primaryColor,
+    fontSize: 16,
+    fontWeight: FontWeight.bold
+  );
 }
 
 class HintFonts{

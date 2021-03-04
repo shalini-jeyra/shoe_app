@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shoe_app/pages/home_page/home_page_components/home_page_components.dart';
 
 class NewArrivalWidget extends StatelessWidget {
-  const NewArrivalWidget({
-    Key key,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
