@@ -1,33 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_app/styles/styles.dart';
+import 'package:shoe_app/pages/add_cart_page/add_cart_components/add_cart_components.dart';
 
 class AddCartPage extends StatefulWidget {
   @override
   _AddCartPageState createState() => _AddCartPageState();
 }
-
 class _AddCartPageState extends State<AddCartPage> {
-  void displayModalBottomSheet(context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext buildContext) {
-          return Column(
-            children: [
-              Row(
-                children: [
-                  Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(shape: BoxShape.circle,color: ButtonColor.sizeColor),
-                    child: Center(child: Text('7.5',style: TextFonts.sentenceText)),
-                  )
-                ],
-              )
-            ],
-          );
-        });
-  }
-
   int _value = 1;
   @override
   Widget build(BuildContext context) {
@@ -38,7 +16,9 @@ class _AddCartPageState extends State<AddCartPage> {
         elevation: 0,
         title:
             Text('Adidas Superstar\nOriginals', style: HeaderFonts.primaryText),
-        actions: [Icon(Icons.add_shopping_cart)],
+        actions: [
+          Icon(Icons.add_shopping_cart),
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,10 +28,11 @@ class _AddCartPageState extends State<AddCartPage> {
               height: 400,
               width: 400,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: NetworkImage(
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJEZmExAO6w23YC_jvA8cF4REmpqS10c8eDw&usqp=CAU'),
-                      fit: BoxFit.fill)),
+                image: DecorationImage(
+                    image: NetworkImage(
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJEZmExAO6w23YC_jvA8cF4REmpqS10c8eDw&usqp=CAU'),
+                    fit: BoxFit.fill),
+              ),
             ),
           ),
           Row(
@@ -78,9 +59,11 @@ class _AddCartPageState extends State<AddCartPage> {
                   child: DropdownButton(
                     value: _value,
                     onChanged: (value) {
-                      setState(() {
-                        _value = value;
-                      });
+                      setState(
+                        () {
+                          _value = value;
+                        },
+                      );
                     },
                     items: [
                       DropdownMenuItem(

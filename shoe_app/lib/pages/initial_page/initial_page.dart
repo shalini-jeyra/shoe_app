@@ -11,8 +11,8 @@ class InitialPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            height: 300,
-            width: 300,
+            height: 250,
+            width: 250,
             decoration: BoxDecoration(
               image: DecorationImage(
                   image: NetworkImage(

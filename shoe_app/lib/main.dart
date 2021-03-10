@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shoe_app/pages/initial_page/initial_page_components/initial_page_components.dart';
+import 'package:shoe_app/sample.dart';
 
 
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,   
       theme: ThemeData(primarySwatch:Colors.grey),   
-    home: LoginPage(),
+    home: ExamplePage(),
     
     );
   }

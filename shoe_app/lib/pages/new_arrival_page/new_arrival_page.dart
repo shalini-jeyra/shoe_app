@@ -5,7 +5,6 @@ class NewArrivalPage extends StatefulWidget {
   @override
   _NewArrivalPageState createState() => _NewArrivalPageState();
 }
-
 class _NewArrivalPageState extends State<NewArrivalPage> {
   int colourValue=0;
   int _value = 1;
@@ -20,7 +19,6 @@ class _NewArrivalPageState extends State<NewArrivalPage> {
         actions: [Icon(Icons.add_shopping_cart)],
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Row(
             children: [
@@ -40,7 +38,6 @@ class _NewArrivalPageState extends State<NewArrivalPage> {
                   ],
                 ),
               ),
-
               Container(
                 child: DropdownButton(
                   value: _value,
@@ -71,6 +68,7 @@ class _NewArrivalPageState extends State<NewArrivalPage> {
               )
             ],
           ),
+          SizedBox(height: 20,),
            Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -83,6 +81,7 @@ class _NewArrivalPageState extends State<NewArrivalPage> {
               )
             ],
           ),
+          SizedBox(height: 20,),
            Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
